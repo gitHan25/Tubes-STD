@@ -8,7 +8,7 @@
 using namespace std;
 
 typedef struct elmBooks *adrBooks;
-typedef books infotype;
+
 
 struct books
 {
@@ -16,17 +16,17 @@ struct books
     string penerbit;
     string ISBN;
     int tahun_terbit;
-}
-
+};
+typedef books infobook;
 struct elmBooks
 {
-    infotype info;
+    infobook info;
     adrBooks next;
 };
 
 struct List_books
 {
     adrBooks first;
-}
+};
 
 #endif // BOOKS_H_INCLUDED

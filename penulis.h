@@ -19,7 +19,10 @@ struct penulis
     string gender;
 };
 typedef penulis infotype;
-
+struct list_relation
+{
+    adrRelation first;
+};
 struct elmPenulis
 {
     infotype info;
@@ -29,15 +32,12 @@ struct elmPenulis
 struct elmRelation
 {
     adrRelation adrBooks;
-    next adrRelation;
+   adrRelation next;
 };
 struct list_penulis
 {
     adrPenulis first;
 };
-struct list_relation
-{
-    adrRelation first;
-};
+
 
 #endif // PENULIS_H_INCLUDED
