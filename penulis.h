@@ -32,12 +32,14 @@ struct elmPenulis
 struct elmRelation
 {
     adrRelation adrBooks;
-   adrRelation next;
+    adrRelation next;
 };
 struct list_penulis
 {
     adrPenulis first;
 };
+
+void insertfirst(list_penulis &L, adrPenulis P);
 
 
 #endif // PENULIS_H_INCLUDED
