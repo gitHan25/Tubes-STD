@@ -3,7 +3,7 @@
 #include <iostream>
 #include "books.h"
 #define first(L) L.first
-#define firstR(P) P->firstR
+#define child(P) P->first
 #define next(P) P->next
 #define info(P) P->info
 
@@ -19,25 +19,29 @@ struct penulis
     string gender;
 };
 typedef penulis infotype;
-struct list_relation
-{
-    adrRelation first;
-};
+
 struct elmPenulis
 {
     infotype info;
     adrPenulis next;
-    list_relation books;
+    adrRelation books;
 };
 struct elmRelation
 {
     adrRelation adrBooks;
-   adrRelation next;
+    adrRelation next;
 };
 struct list_penulis
 {
-    adrPenulis first;
+    adrPenulis first_P;
 };
+
+
+void create_list_penulis(list_penulis &L);
+adrPenulis create_elm_penulis(infotype x);
+bool is_emptyP(list_penulis L);
+adrPenulis insert_last_penulis(list_penulis &L)
+
 
 
 #endif // PENULIS_H_INCLUDED

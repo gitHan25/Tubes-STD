@@ -17,7 +17,7 @@ struct books
     string ISBN;
     int tahun_terbit;
 };
-typedef books infobook;
+typedef books infobooks;
 struct elmBooks
 {
     infobook info;
@@ -28,5 +28,11 @@ struct List_books
 {
     adrBooks first;
 };
+
+void create_list_books(List_books &L);
+adrBooks create_elm_books(infobooks x);
+bool is_empty(List_books L);
+void insert_last(List_books &L,adrBooks p);
+
 
 #endif // BOOKS_H_INCLUDED
