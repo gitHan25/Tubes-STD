@@ -27,7 +27,7 @@ void insert_last_penulis(list_penulis &L,adrPenulis p){
 
     }else{
         adrPenulis q = first_P(L);
-            while(q!=NULL){
+            while(next(q)!=NULL){
                 q=next(q);
             }
             next(q)=p;
