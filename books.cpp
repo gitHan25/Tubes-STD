@@ -2,11 +2,11 @@
 #include"books.h"
 
 void create_list_books(List_books &L){
-    first(L)==NULL;
+    first_B(L)==NULL;
 }
 
-bool is_empty(List_books L){
-    return first(L)==NULL;
+bool is_emptyB(List_books L){
+    return first_B(L)==NULL;
 
 }
 
@@ -14,14 +14,15 @@ adrBooks create_elm_books(infobooks x){
     adrBooks  p = new elmBooks;
     info(p)= x;
     next(p)=NULL;
+    return p;
 }
 
-void insert_last(List_books &L,adrBooks p){
-      if (is_empty(L)){
-        first_P(L)=p;
+void insert_last_books(List_books &L,adrBooks p){
+      if (is_emptyB(L)){
+        first_B(L)=p;
 
     }else{
-        adrPenulis q = first_P(L);
+        adrBooks q = first_B(L);
             while(q!=NULL){
                 q=next(q);
             }

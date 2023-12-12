@@ -2,8 +2,8 @@
 #define PENULIS_H_INCLUDED
 #include <iostream>
 #include "books.h"
-#define first(L) L.first
-#define child(P) P->first
+#define first_P(L) L.first_P
+#define child(P) P->child
 #define next(P) P->next
 #define info(P) P->info
 
@@ -24,7 +24,7 @@ struct elmPenulis
 {
     infotype info;
     adrPenulis next;
-    adrRelation books;
+    adrRelation child;
 };
 struct elmRelation
 {
@@ -40,7 +40,7 @@ struct list_penulis
 void create_list_penulis(list_penulis &L);
 adrPenulis create_elm_penulis(infotype x);
 bool is_emptyP(list_penulis L);
-adrPenulis insert_last_penulis(list_penulis &L)
+adrPenulis insert_last_penulis(list_penulis &L);
 
 
 

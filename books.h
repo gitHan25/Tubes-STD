@@ -1,7 +1,7 @@
 #ifndef BOOKS_H_INCLUDED
 #define BOOKS_H_INCLUDED
 #include <iostream>
-#define first(L) L.first
+#define first_B(L) L.first_B
 #define next(P) P->next
 #define info(P) P->info
 
@@ -20,19 +20,19 @@ struct books
 typedef books infobooks;
 struct elmBooks
 {
-    infobook info;
+    infobooks info;
     adrBooks next;
 };
 
 struct List_books
 {
-    adrBooks first;
+    adrBooks first_B;
 };
 
 void create_list_books(List_books &L);
 adrBooks create_elm_books(infobooks x);
-bool is_empty(List_books L);
-void insert_last(List_books &L,adrBooks p);
+bool is_emptyB(List_books L);
+void insert_last_books(List_books &L,adrBooks p);
 
 
 #endif // BOOKS_H_INCLUDED
