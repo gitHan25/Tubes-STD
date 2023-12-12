@@ -1,9 +1,11 @@
-#include <iostream>
+#include "penulis.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    penulis data;
+    data.name = "farhan";
+    cout << data.name << endl;
     return 0;
 }
