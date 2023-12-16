@@ -5,6 +5,7 @@
 #define next(P) P->next
 #define info(P) P->info
 
+//First_B == first dari list buku
 using namespace std;
 
 typedef struct elmBooks *adrBooks;
