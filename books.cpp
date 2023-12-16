@@ -23,7 +23,7 @@ void insert_last_books(List_books &L,adrBooks p){
 
     }else{
         adrBooks q = first_B(L);
-            while(q!=NULL){
+            while(next(q)!=NULL){
                 q=next(q);
             }
             next(q)=p;
