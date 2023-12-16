@@ -7,6 +7,8 @@
 #define next(P) P->next
 #define info(P) P->info
 
+
+//First_P == first dari list penulis
 using namespace std;
 
 typedef struct elmPenulis *adrPenulis;
@@ -41,6 +43,16 @@ void create_list_penulis(list_penulis &L);
 adrPenulis create_elm_penulis(infotype x);
 bool is_emptyP(list_penulis L);
 void insert_last_penulis(list_penulis &L,adrPenulis p);
+void insert_first_penulis(list_penulis &L,adrPenulis p);
+adrPenulis find_penulis(list_penulis L, string name);
+void delete_penulis(list_penulis &L,adrPenulis p);
+void delete_first_penulis(list_penulis &L,adrPenulis p);
+void delete_last_penulis(list_penulis &L,adrPenulis p);
+void delete_after_penulis(list_penulis &L,adrPenulis p);
+
+
+
+
 
 
 

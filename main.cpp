@@ -1,5 +1,6 @@
 #include "penulis.h"
 
+//MAIN DIGUNAKAN UNTUK DEBUG TERLEBIH DAHULU SEBELUM SEMUA FUNGSI SELESAI
 using namespace std;
 
 int main()
@@ -23,11 +24,18 @@ int main()
     p = create_elm_penulis(x);
    insert_last_penulis(L,p);
 
-   adrPenulis q = first_P(L);
-   while(q!=NULL){
+
+   delete_last_penulis(L,p);
+
+  adrPenulis q = first_P(L);
+   if(first_P(L)==NULL){
+    cout<<"List kosong"<<endl;
+    }else{
+   }while(q!=NULL){
 
     cout<<info(q).name<<endl;
     q=next(q);
    }
+
     return 0;
 }
