@@ -17,3 +17,18 @@
 	"penulis.h"
 	"books.h"
 
+1702798064 source:c:\users\62821\documents\github\tubes-std\penulis.cpp
+	"penulis.h"
+	"books.h"
+
+1702798064 c:\users\62821\documents\github\tubes-std\penulis.h
+	<iostream>
+	"books.h"
+
+1702800313 c:\users\62821\documents\github\tubes-std\books.h
+	<iostream>
+
+1702800313 source:c:\users\62821\documents\github\tubes-std\books.cpp
+	"penulis.h"
+	"books.h"
+
