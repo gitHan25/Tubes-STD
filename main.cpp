@@ -1,4 +1,5 @@
-#include "penulis.h"
+#include"penulis.h"
+#include"books.h"
 
 //MAIN DIGUNAKAN UNTUK DEBUG TERLEBIH DAHULU SEBELUM SEMUA FUNGSI SELESAI
 using namespace std;
@@ -37,37 +38,41 @@ int main()
 //    q=next(q);
 //   }
 
-   List_books Lb;
+    List_books Lb;
 
-   create_list_books(Lb);
-   infobooks z;
-   z.judul_buku = "Asiknya belajar C++";
-   z.penerbit = "ALH";
-   z.ISBN = "672547";
-   z.tahun_terbit = 2020;
+    create_list_books(Lb);
+    infobooks y;
+    y.judul_buku="Harry potter";
+    y.ISBN="123123";
+    y.penerbit="radit";
+    y.tahun_terbit=2012;
 
-   adrBooks s = create_elm_books(z);
-   insert_last_books(Lb,s);
 
-   z.judul_buku = "Cara ampuh dapat A";
-   z.penerbit = "ALH";
-   z.ISBN = "645319";
-   z.tahun_terbit = 2018;
+    adrBooks z = create_elm_books(y);
 
-   s = create_elm_books(z);
-   insert_last_books(Lb,s);
+    insert_last_books(Lb,z);
 
-   delete_last_books(Lb,s);
 
-   adrBooks r = first_B(Lb);
-   if(first_B(Lb)==NULL){
-    cout<<"List kosong"<<endl;
+    y.judul_buku="Harry roller";
+    y.ISBN="123123";
+    y.penerbit="radit";
+    y.tahun_terbit=2012;
+
+ z = create_elm_books(y);
+
+    insert_first_books(Lb,z);
+
+    adrBooks v = first_B(Lb);
+
+    if(first_B(Lb)==NULL){
+        cout<<"list kosong"<<endl;
+
     }else{
-   }while(r!=NULL){
-
-    cout<<info(r).judul_buku<<endl;
-    r=next(r);
-   }
+        while(v!=NULL){
+            cout<<info(v).judul_buku<<endl;
+            v=next(v);
+        }
+    }
 
     return 0;
 }

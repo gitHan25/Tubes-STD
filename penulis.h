@@ -6,6 +6,8 @@
 #define child(P) P->child
 #define next(P) P->next
 #define info(P) P->info
+#define nextRelation(p) p->nextRelation
+
 
 
 //First_P == first dari list penulis
@@ -30,8 +32,8 @@ struct elmPenulis
 };
 struct elmRelation
 {
-    adrRelation adrBooks;
-    adrRelation next;
+    adrBooks books;
+    adrRelation nextRelation;
 };
 struct list_penulis
 {

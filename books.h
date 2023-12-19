@@ -34,6 +34,7 @@ void create_list_books(List_books &L);
 adrBooks create_elm_books(infobooks x);
 bool is_emptyB(List_books L);
 void insert_last_books(List_books &L,adrBooks p);
+void insert_first_books(List_books &L,adrBooks p);
 adrBooks find_books(List_books L, string judul_buku);
 void delete_books(List_books &L,adrBooks p);
 void delete_first_books(List_books &L,adrBooks p);
