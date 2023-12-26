@@ -1,73 +1,152 @@
-#include "penulis.h"
+#include"penulis.h"
+#include"books.h"
 
 //MAIN DIGUNAKAN UNTUK DEBUG TERLEBIH DAHULU SEBELUM SEMUA FUNGSI SELESAI
 using namespace std;
 
 int main()
 {
-//   list_penulis L;
+   list_penulis L;
+
+   create_list_penulis(L);
 //
-//   create_list_penulis(L);
-//
-//   infotype x;
-//   x.name="raditya anto";
-//   x.gender="binary";
-//   x.Tahun_lahir=1984;
-//
-//   adrPenulis p = create_elm_penulis(x);
-//   insert_last_penulis(L,p);
-//
-//   x.name="raditya dika";
-//   x.gender="laki-laki";
-//   x.Tahun_lahir=1984;
-//
-//    p = create_elm_penulis(x);
-//   insert_last_penulis(L,p);
-//
+   infotype x;
+   x.name="raditya anto";
+   x.gender="binary";
+   x.Tahun_lahir=1984;
+
+   adrPenulis p = create_elm_penulis(x);
+   insert_last_penulis(L,p);
+
+   x.name="raditya dika";
+   x.gender="laki-laki";
+   x.Tahun_lahir=1984;
+
+    p = create_elm_penulis(x);
+   insert_last_penulis(L,p);
+    x.name="bangor";
+   x.gender="laki-laki";
+   x.Tahun_lahir=1984;
+
+    p = create_elm_penulis(x);
+   insert_last_penulis(L,p);
+
+
 //
 //   delete_last_penulis(L,p);
 //
-//  adrPenulis q = first_P(L);
-//   if(first_P(L)==NULL){
-//    cout<<"List kosong"<<endl;
-//    }else{
-//   }while(q!=NULL){
-//
-//    cout<<info(q).name<<endl;
-//    q=next(q);
-//   }
 
-   List_books Lb;
+   x.name="anto dika";
+   x.gender="laki-laki";
+   x.Tahun_lahir=1984;
 
-   create_list_books(Lb);
-   infobooks z;
-   z.judul_buku = "Asiknya belajar C++";
-   z.penerbit = "ALH";
-   z.ISBN = "672547";
-   z.tahun_terbit = 2020;
+    p = create_elm_penulis(x);
+   insert_last_penulis(L,p);
 
-   adrBooks s = create_elm_books(z);
-   insert_last_books(Lb,s);
+   adrPenulis b = find_penulis(L,"bangor");
 
-   z.judul_buku = "Cara ampuh dapat A";
-   z.penerbit = "ALH";
-   z.ISBN = "645319";
-   z.tahun_terbit = 2018;
+  adrPenulis q = first_P(L);
 
-   s = create_elm_books(z);
-   insert_last_books(Lb,s);
+ showPenulis(L);
 
-   delete_last_books(Lb,s);
 
-   adrBooks r = first_B(Lb);
-   if(first_B(Lb)==NULL){
-    cout<<"List kosong"<<endl;
+
+cout<<"-----------------------"<<endl;
+    List_books Lb;
+
+    create_list_books(Lb);
+    infobooks y;
+    y.judul_buku="Harry potter";
+    y.ISBN="123123";
+    y.penerbit="radit";
+    y.tahun_terbit=2012;
+
+
+    adrBooks z = create_elm_books(y);
+
+    insert_last_books(Lb,z);
+
+
+    y.judul_buku="Harry roller";
+    y.ISBN="123123";
+    y.penerbit="radit";
+    y.tahun_terbit=2012;
+
+ z = create_elm_books(y);
+
+    insert_first_books(Lb,z);
+
+    adrBooks v = first_B(Lb);
+
+    if(first_B(Lb)==NULL){
+        cout<<"list kosong"<<endl;
+
     }else{
-   }while(r!=NULL){
+        while(v!=NULL){
+            cout<<info(v).judul_buku<<endl;
+            v=next(v);
+        }
+    }
 
-    cout<<info(r).judul_buku<<endl;
-    r=next(r);
-   }
+adrPenulis u = find_penulis(L,"raditya dika");
+adrBooks c = find_books(Lb,"Harry roller");
+
+adrRelation t = create_elm_relation(c);
+addRelation(u,t);
+ u = find_penulis(L,"raditya anto");
+  c = find_books(Lb,"Harry roller");
+
+if (u != NULL && c != NULL) {
+    // Allocate memory for child(u) if it is NULL
+  adrRelation r=  create_elm_relation(c);
+   addRelation(u,r);
+} else {
+    cout << "Buku dan penulis belum terdaftar" << endl;
+}
+
+
+
+
+adrPenulis r = first_P(L);
+
+
+while (r != NULL) {
+    cout << "Penulis: " << info(r).name << endl;
+
+    adrRelation n = child(r);
+
+if(n==NULL){
+    cout<<"belum diinput"<<endl;
+}else{
+    while (n != NULL) {
+
+
+        cout << "Buku: " <<info(books(n)).judul_buku << endl;
+        n = nextRelation(n);
+    }
+}
+
+    r = next(r);
+}
+cout<<endl;
+adrRelation o = findRelation(u,"Harry roller");
+int l = 1;
+//show parent of child
+    q = first_P(L);
+        while(q!=NULL){
+                adrRelation i = child(q);
+                    while(i!=NULL){
+                            if(info(books(i)).judul_buku=="Harry roller"){
+                                cout<<l<<info(q).name<<endl;
+                                l++;
+                            }
+                            i=nextRelation(i);
+
+                    }
+            q=next(q);
+        }
+
+
 
     return 0;
 }

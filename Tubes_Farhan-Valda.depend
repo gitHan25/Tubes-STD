@@ -1,19 +1,20 @@
 # depslib dependency file v1.0
-1702725509 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
-	"penulis.h"
-
-1702723714 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
-	<iostream>
-	"books.h"
-
-1702709778 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.h
-	<iostream>
-
-1702725391 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
+1703587807 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
 	"penulis.h"
 	"books.h"
 
-1702374928 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.cpp
+1703587806 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
+	<iostream>
+	"books.h"
+
+1703587833 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.h
+	<iostream>
+
+1703587807 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
+	"penulis.h"
+	"books.h"
+
+1703587556 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.cpp
 	"penulis.h"
 	"books.h"
 

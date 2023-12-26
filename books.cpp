@@ -1,8 +1,7 @@
-#include"penulis.h"
 #include"books.h"
 
 void create_list_books(List_books &L){
-    first_B(L)==NULL;
+    first_B(L)=NULL;
 }
 
 bool is_emptyB(List_books L){
@@ -18,7 +17,7 @@ adrBooks create_elm_books(infobooks x){
 }
 
 void insert_last_books(List_books &L,adrBooks p){
-      if (is_emptyB(L)){
+      if (first_B(L)==NULL){
         first_B(L)=p;
 
     }else{
@@ -30,7 +29,7 @@ void insert_last_books(List_books &L,adrBooks p){
     }
 }
 void insert_first_books(List_books &L,adrBooks p){
-    if (is_emptyB(L)){
+    if (first_B(L)==NULL){
         first_B(L)=p;
 
     }else{
@@ -71,7 +70,7 @@ void delete_books(List_books &L,adrBooks p){
     }
 };
 void delete_first_books(List_books &L,adrBooks p){
-    if(is_emptyB(L)){
+    if(first_B(L)==NULL){
         cout<<"List buku kosong"<<endl;
 
     }else if(next(first_B(L))==NULL){
@@ -85,7 +84,7 @@ void delete_first_books(List_books &L,adrBooks p){
     }
 };
 void delete_last_books(List_books &L,adrBooks p){
-    if(is_emptyB(L)){
+    if(first_B(L)==NULL){
         cout<<"List buku kosong"<<endl;
 
     }else if(next(first_B(L))==NULL){
@@ -116,5 +115,3 @@ void delete_after_books(List_books &L,adrBooks p){
             q=next(q);
         }
 };
-
-
