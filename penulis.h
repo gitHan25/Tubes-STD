@@ -6,6 +6,7 @@
 #define child(P) P->child
 #define next(P) P->next
 #define info(P) P->info
+#define books(P) P->books
 #define nextRelation(p) p->nextRelation
 
 
@@ -51,6 +52,15 @@ void delete_penulis(list_penulis &L,adrPenulis p);
 void delete_first_penulis(list_penulis &L,adrPenulis p);
 void delete_last_penulis(list_penulis &L,adrPenulis p);
 void delete_after_penulis(list_penulis &L,adrPenulis p);
+adrRelation create_elm_relation(adrBooks x);
+void addRelation(adrPenulis P, adrRelation R);
+void connect(adrPenulis p , adrRelation q);
+adrRelation findRelation(adrPenulis p,string judul_buku);
+void showPenulis(list_penulis L);
+
+
+
+
 
 
 
