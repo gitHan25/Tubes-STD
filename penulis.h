@@ -57,6 +57,10 @@ void addRelation(adrPenulis P, adrRelation R);
 void connect(adrPenulis p , adrRelation q);
 adrRelation findRelation(adrPenulis p,string judul_buku);
 void showPenulis(list_penulis L);
+void deleteR(list_penulis &L,adrRelation R);
+void delete_first_relation(list_penulis &L,adrPenulis P,adrRelation &R);
+void delete_last_relation(list_penulis &L,adrPenulis P,adrRelation &R);
+void delete_after_relation(list_penulis &L,adrPenulis P,adrRelation R);
 
 
 

@@ -95,25 +95,34 @@ adrRelation t = create_elm_relation(c);
 addRelation(u,t);
  u = find_penulis(L,"raditya anto");
   c = find_books(Lb,"Harry roller");
-
+ adrRelation r=  create_elm_relation(c);
 if (u != NULL && c != NULL) {
     // Allocate memory for child(u) if it is NULL
-  adrRelation r=  create_elm_relation(c);
+
    addRelation(u,r);
 } else {
     cout << "Buku dan penulis belum terdaftar" << endl;
 }
 
+// u = find_penulis(L,"raditya anto");
+//  c = find_books(Lb,"Harry potter");
+// r=  create_elm_relation(c);
+//if (u != NULL && c != NULL) {
+//    // Allocate memory for child(u) if it is NULL
+//
+//   addRelation(u,r);
+//} else {
+//    cout << "Buku dan penulis belum terdaftar" << endl;
+//}
+
+deleteR(L,r);
+adrPenulis k = first_P(L);
 
 
+while (k != NULL) {
+    cout << "Penulis: " << info(k).name << endl;
 
-adrPenulis r = first_P(L);
-
-
-while (r != NULL) {
-    cout << "Penulis: " << info(r).name << endl;
-
-    adrRelation n = child(r);
+    adrRelation n = child(k);
 
 if(n==NULL){
     cout<<"belum diinput"<<endl;
@@ -126,17 +135,20 @@ if(n==NULL){
     }
 }
 
-    r = next(r);
+    k = next(k);
 }
+
+
+
 cout<<endl;
-adrRelation o = findRelation(u,"Harry roller");
+adrRelation o = findRelation(u,"Harry potter");
 int l = 1;
 //show parent of child
     q = first_P(L);
         while(q!=NULL){
                 adrRelation i = child(q);
                     while(i!=NULL){
-                            if(info(books(i)).judul_buku=="Harry roller"){
+                            if(info(books(i)).judul_buku=="Harry potter"){
                                 cout<<l<<info(q).name<<endl;
                                 l++;
                             }
