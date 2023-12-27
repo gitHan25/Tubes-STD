@@ -1,18 +1,18 @@
 # depslib dependency file v1.0
 140736469717418 <<<<<<< HEAD
 
-1703617111 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
+1703671321 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
 	"penulis.h"
 	"books.h"
 
-1703615361 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
+1703671618 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
 	<iostream>
 	"books.h"
 
 1703587833 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.h
 	<iostream>
 
-1703617046 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
+1703671850 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
 	"penulis.h"
 	"books.h"
 

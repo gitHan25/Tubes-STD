@@ -104,18 +104,19 @@ if (u != NULL && c != NULL) {
     cout << "Buku dan penulis belum terdaftar" << endl;
 }
 
-// u = find_penulis(L,"raditya anto");
-//  c = find_books(Lb,"Harry potter");
-// r=  create_elm_relation(c);
-//if (u != NULL && c != NULL) {
-//    // Allocate memory for child(u) if it is NULL
-//
-//   addRelation(u,r);
-//} else {
-//    cout << "Buku dan penulis belum terdaftar" << endl;
-//}
+ u = find_penulis(L,"raditya anto");
+  c = find_books(Lb,"Harry potter");
+ r=  create_elm_relation(c);
+if (u != NULL && c != NULL) {
+    // Allocate memory for child(u) if it is NULL
 
-deleteR(L,r);
+   addRelation(u,r);
+} else {
+    cout << "Buku dan penulis belum terdaftar" << endl;
+}
+
+adrRelation w = findRelation(u,"Harry roller");
+deleteR(L,w);
 adrPenulis k = first_P(L);
 
 
@@ -148,7 +149,7 @@ int l = 1;
         while(q!=NULL){
                 adrRelation i = child(q);
                     while(i!=NULL){
-                            if(info(books(i)).judul_buku=="Harry potter"){
+                            if(info(books(i)).judul_buku=="Harry roller"){
                                 cout<<l<<info(q).name<<endl;
                                 l++;
                             }

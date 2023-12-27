@@ -210,70 +210,80 @@ void showPenulis(list_penulis L){
 }
 
 void deleteR(list_penulis &L, adrRelation R) {
-    adrPenulis p = first_P(L);
+        adrPenulis p;
 
-    if (R != NULL) {
-        while (p != NULL) {
-            adrRelation q = child(p);
-            adrRelation prec = NULL;
+        adrRelation prec;
 
-            while (q != NULL) {
-                if (q == R) {
-                    if (q == child(p)) {
+        if (R != NULL) {
+                p =first_P(L);
+            while (p != NULL) {
+                adrRelation q = child(p);
 
-                        delete_first_relation(L, p, R);
-                    } else if (nextRelation(R) == NULL) {
+                while (q != NULL) {
+                    if (info(books(q)).judul_buku == info(books(R)).judul_buku) {
+                        if (q == child(p)) {
 
-                        delete_last_relation(L, p, R);
-                    } else {
+                            delete_first_relation(L, p, q);
+                        } else if (nextRelation(q) == NULL) {
 
-                        prec = child(p);
-                       while (nextRelation(prec) != R) {
-                            prec = nextRelation(prec);
+                            delete_last_relation(L, p,q);
+                        } else {
+
+                            prec = child(p);
+                           while (nextRelation(prec) != R) {
+                                prec = nextRelation(prec);
+                            }
+                            delete_after_relation(L, p, prec);
                         }
-                        delete_after_relation(L, p, prec);
                     }
+
+                    q = nextRelation(q);
                 }
 
-                q = nextRelation(q);
+                p = next(p);
             }
-
-            p = next(p);
+        } else {
+            cout << "List kosong" << endl;
         }
-    } else {
-        cout << "List kosong" << endl;
     }
-}
 
 
-void delete_first_relation(list_penulis &L,adrPenulis P,adrRelation &R){
+    void delete_first_relation(list_penulis &L,adrPenulis P,adrRelation R){
 
-   child(P)=nextRelation(R);
-   nextRelation(R)=NULL;
-}
+        if(nextRelation(child(P))==NULL){
+            R = child(P);
+            child(P)=NULL;
+        }else{
 
-void delete_last_relation(list_penulis &L,adrPenulis P,adrRelation &R){
+       child(P)=nextRelation(R);
+       nextRelation(R)=NULL;
+        }
 
-    adrRelation q =child(P);
+    }
 
-            while(nextRelation(nextRelation(q))!=NULL){
-            q=nextRelation(q);
-            }
-                R=nextRelation(q);
-                nextRelation(q)=NULL;
+    void delete_last_relation(list_penulis &L,adrPenulis P,adrRelation R){
 
-}
+        adrRelation q =child(P);
 
-void delete_after_relation(list_penulis &L,adrPenulis,adrRelation R){
+                while(nextRelation(nextRelation(q))!=NULL){
+                q=nextRelation(q);
+                }
+                    R=nextRelation(q);
+                   nextRelation(R)=NULL;
+                    nextRelation(q)=NULL;
 
-       adrRelation prec;
+    }
 
-       prec =nextRelation(R);
-       nextRelation(R)=nextRelation(prec);
-       nextRelation(prec) =NULL;
+    void delete_after_relation(list_penulis &L,adrPenulis P,adrRelation R){
+
+           adrRelation prec;
+
+           prec =nextRelation(R);
+           nextRelation(R)=nextRelation(prec);
+           nextRelation(prec) =NULL;
 
 
-}
+    }
 
 
 
