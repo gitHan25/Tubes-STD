@@ -208,3 +208,82 @@ void showPenulis(list_penulis L){
     }
 
 }
+
+void deleteR(list_penulis &L, adrRelation R) {
+        adrPenulis p;
+
+        adrRelation prec;
+
+        if (R != NULL) {
+                p =first_P(L);
+            while (p != NULL) {
+                adrRelation q = child(p);
+
+                while (q != NULL) {
+                    if (info(books(q)).judul_buku == info(books(R)).judul_buku) {
+                        if (q == child(p)) {
+
+                            delete_first_relation(L, p, q);
+                        } else if (nextRelation(q) == NULL) {
+
+                            delete_last_relation(L, p,q);
+                        } else {
+
+                            prec = child(p);
+                           while (nextRelation(prec) != R) {
+                                prec = nextRelation(prec);
+                            }
+                            delete_after_relation(L, p, prec);
+                        }
+                    }
+
+                    q = nextRelation(q);
+                }
+
+                p = next(p);
+            }
+        } else {
+            cout << "List kosong" << endl;
+        }
+    }
+
+
+    void delete_first_relation(list_penulis &L,adrPenulis P,adrRelation R){
+
+        if(nextRelation(child(P))==NULL){
+            R = child(P);
+            child(P)=NULL;
+        }else{
+
+       child(P)=nextRelation(R);
+       nextRelation(R)=NULL;
+        }
+
+    }
+
+    void delete_last_relation(list_penulis &L,adrPenulis P,adrRelation R){
+
+        adrRelation q =child(P);
+
+                while(nextRelation(nextRelation(q))!=NULL){
+                q=nextRelation(q);
+                }
+                    R=nextRelation(q);
+                   nextRelation(R)=NULL;
+                    nextRelation(q)=NULL;
+
+    }
+
+    void delete_after_relation(list_penulis &L,adrPenulis P,adrRelation R){
+
+           adrRelation prec;
+
+           prec =nextRelation(R);
+           nextRelation(R)=nextRelation(prec);
+           nextRelation(prec) =NULL;
+
+
+    }
+
+
+
