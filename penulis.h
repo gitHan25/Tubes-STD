@@ -45,6 +45,7 @@ struct list_penulis
 void create_list_penulis(list_penulis &L);
 adrPenulis create_elm_penulis(infotype x);
 bool is_emptyP(list_penulis L);
+void insert_penulis(list_penulis &L,adrPenulis p);
 void insert_last_penulis(list_penulis &L,adrPenulis p);
 void insert_first_penulis(list_penulis &L,adrPenulis p);
 adrPenulis find_penulis(list_penulis L, string name);

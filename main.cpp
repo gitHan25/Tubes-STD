@@ -1,5 +1,6 @@
 #include"penulis.h"
 #include"books.h"
+#include"menu.h"
 
 //MAIN DIGUNAKAN UNTUK DEBUG TERLEBIH DAHULU SEBELUM SEMUA FUNGSI SELESAI
 using namespace std;
@@ -76,17 +77,7 @@ cout<<"-----------------------"<<endl;
 
     insert_first_books(Lb,z);
 
-    adrBooks v = first_B(Lb);
-
-    if(first_B(Lb)==NULL){
-        cout<<"list kosong"<<endl;
-
-    }else{
-        while(v!=NULL){
-            cout<<info(v).judul_buku<<endl;
-            v=next(v);
-        }
-    }
+show_books(Lb);
 
 adrPenulis u = find_penulis(L,"raditya dika");
 adrBooks c = find_books(Lb,"Harry roller");
@@ -160,6 +151,6 @@ int l = 1;
         }
 
 
-
+    add_penulis(L,p,Lb);
     return 0;
 }

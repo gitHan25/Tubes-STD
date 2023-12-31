@@ -16,6 +16,20 @@ adrBooks create_elm_books(infobooks x){
     return p;
 }
 
+
+void insert_books(List_books &L,adrBooks p){
+    adrBooks check =find_books(L,info(p).judul_buku);
+
+        if (check !=NULL){
+            cout<<"Buku sudah terdaftar!"<<endl;
+        }else{
+            if(first_B(L)==NULL){
+                insert_first_books(L,p);
+            }else{
+                insert_last_books(L,p);
+            }
+        }
+}
 void insert_last_books(List_books &L,adrBooks p){
       if (first_B(L)==NULL){
         first_B(L)=p;
@@ -115,3 +129,23 @@ void delete_after_books(List_books &L,adrBooks p){
             q=next(q);
         }
 };
+
+void show_books(List_books L){
+
+        int i =1;
+        if(is_emptyB(L)){
+            cout<<"List buku masih kosong, ayo isi dahulu!"<<endl;
+
+        }else{
+            adrBooks p = first_B(L);
+
+                while(p!=NULL){
+                    cout<<i<<"."<<"Judul Buku: "<<info(p).judul_buku<<endl;
+                    cout<<"Penerbit: "<<info(p).penerbit<<endl;
+                    cout<<"Tahun terbit: "<<info(p).tahun_terbit<<endl;
+                    cout<<"ISBN: "<<info(p).ISBN<<endl;
+                    i++;
+                    p=next(p);
+                }
+        }
+}
