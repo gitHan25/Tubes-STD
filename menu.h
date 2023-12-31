@@ -6,7 +6,7 @@
 
 void add_penulis(list_penulis &LP,adrPenulis p,List_books LB);
 void add_books(List_books &LB,adrBooks p,list_penulis LP);
-void hubungkan(list_penulis &LP,List_books &LB);
+void hubungkan(list_penulis &LP,List_books LB);
 void deleteP(list_penulis &LP,List_books LB,adrPenulis p);
 
 

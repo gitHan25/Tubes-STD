@@ -17,18 +17,32 @@ adrBooks create_elm_books(infobooks x){
 }
 
 
-void insert_books(List_books &L,adrBooks p){
-    adrBooks check =find_books(L,info(p).judul_buku);
+void insert_books(List_books &L, adrBooks p) {
+    adrBooks check = find_books(L, info(p).judul_buku);
 
-        if (check !=NULL){
-            cout<<"Buku sudah terdaftar!"<<endl;
-        }else{
-            if(first_B(L)==NULL){
-                insert_first_books(L,p);
-            }else{
-                insert_last_books(L,p);
+    if (check != NULL) {
+        cout << "Buku sudah terdaftar!" << endl;
+    } else {
+        if (first_B(L) == NULL || info(first_B(L)).tahun_terbit > info(p).tahun_terbit) {
+            insert_first_books(L, p);
+        } else {
+            adrBooks prec = first_B(L);
+            while (next(prec) != NULL && info(next(prec)).tahun_terbit < info(p).tahun_terbit) {
+                prec = next(prec);
+            }
+
+            if (next(prec) != NULL) {
+                insert_after_books(L, prec, p);
+            } else {
+                insert_last_books(L, p);
             }
         }
+    }
+}
+
+void insert_after_books(List_books &L,adrBooks prec,adrBooks p){
+    next(p)=next(prec);
+    next(prec)=p;
 }
 void insert_last_books(List_books &L,adrBooks p){
       if (first_B(L)==NULL){
