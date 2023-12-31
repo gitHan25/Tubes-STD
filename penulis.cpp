@@ -19,6 +19,19 @@ bool is_emptyP(list_penulis L){
     return first_P(L)==NULL;
 }
 
+void insert_penulis(list_penulis &L,adrPenulis p){
+    adrPenulis check =find_penulis(L,info(p).name);
+
+        if (check !=NULL){
+            cout<<"Penulis sudah terdaftar!"<<endl;
+        }else{
+            if(first_P(L)==NULL){
+                insert_first_penulis(L,p);
+            }else{
+                insert_last_penulis(L,p);
+            }
+        }
+}
 
 void insert_last_penulis(list_penulis &L,adrPenulis p){
 
