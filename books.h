@@ -36,6 +36,7 @@ bool is_emptyB(List_books L);
 void insert_books(List_books &L,adrBooks p);
 void insert_last_books(List_books &L,adrBooks p);
 void insert_first_books(List_books &L,adrBooks p);
+void insert_after_books(List_books &L,adrBooks prec,adrBooks p);
 adrBooks find_books(List_books L, string judul_buku);
 void delete_books(List_books &L,adrBooks p);
 void delete_first_books(List_books &L,adrBooks p);

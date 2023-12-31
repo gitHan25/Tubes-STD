@@ -152,5 +152,8 @@ int l = 1;
 
 
     add_penulis(L,p,Lb);
+    add_books(Lb,z,L);
+    hubungkan(L,Lb);
+    deleteP(L,Lb,p);
     return 0;
 }
