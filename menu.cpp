@@ -205,3 +205,118 @@ void show_penulis_with_books(list_penulis LP){
 
 }
 
+void show_books_with_penulis(List_books LB,list_penulis LP){
+
+    cout<<"--------------------------------------"<<endl;
+    cout<<"            Buku dan penulis "<<endl;
+    cout<<"--------------------------------------"<<endl;
+
+    if(is_emptyB(LB)&&is_emptyP(LP)){
+
+        cout<<"Data kosong"<<endl;
+    }else{
+        adrBooks q = first_B(LB);
+
+                while(q!=NULL){
+                        cout<<"Buku "<<info(q).judul_buku<<" ditulis oleh: "<<endl;
+
+                            adrPenulis p = first_P(LP);
+                                while(p!=NULL){
+                                    adrRelation r = child(p);
+
+                                        while(r!=NULL){
+                                            if(info(books(r)).judul_buku == info(q).judul_buku){
+                                                cout<<"-"<<info(p).name<<endl;
+                                            }
+                                            r=nextRelation(r);
+                                        }
+                                        p=next(p);
+                                }
+                           q=next(q);
+                }
+    }
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+
+}
+
+void show_specific_penulis(list_penulis LP,List_books LB){
+    string nama;
+    cout<<"--------------------------------------"<<endl;
+    cout<<"   Cari penulis dan buku yang ditulis "<<endl;
+    cout<<"--------------------------------------"<<endl;
+
+    showPenulis(LP);
+
+    if(is_emptyP(LP) &&is_emptyB(LB)){
+        cout<<"data kosong!"<<endl;
+    }else{
+    cout<<"Masukkan nama penulis yang ingin dicari: ";
+    cin>>nama;
+
+    adrPenulis p = find_penulis(LP,nama);
+
+        if(p!=NULL){
+            cout<<"Nama: "<<info(p).name<<endl;
+            adrRelation r = child(p);
+                if(r!=NULL){
+                         cout<<"Buku yang ditulis oleh "<<nama<<":"<<endl;
+                    while(r!=NULL){
+
+                        cout<<"-"<<info(books(r)).judul_buku<<endl;
+                        r=nextRelation(r);
+                    }
+                }else{
+                    cout<<"Buku tidak dapat ditemukan!"<<endl;
+                }
+        }else{
+            cout<<"Penulis belum terdaftar!"<<endl;
+        }
+    }
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+}
+
+
+void show_specific_book(List_books LB,list_penulis LP){
+
+    string judul;
+    cout<<"--------------------------------------"<<endl;
+    cout<<"              Cari buku "<<endl;
+    cout<<"--------------------------------------"<<endl;
+
+    if(is_emptyB(LB) && is_emptyP(LP)){
+        cout<<"List kosong"<<endl;
+    }else{
+
+            cout<<"Masukkan judul buku yang akan dicari: ";
+            cin>>judul;;
+            adrBooks q = find_books(LB,judul);
+
+            if(q!=NULL){
+                cout<<"Buku "<<judul<<" ditulis oleh: "<<endl;
+
+                adrPenulis p = first_P(LP);
+                    while(p!=NULL){
+                        adrRelation r = findRelation(p,info(q).judul_buku);
+                            if(r!=NULL){
+                                cout<<"-"<<info(p).name<<endl;
+                        }
+                    p=next(p);
+                    }
+
+                }else{
+
+                    cout<<"Data buku tidak ditemukan!"<<endl;
+                }
+
+    }
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+}
+
+
+
+
+
+

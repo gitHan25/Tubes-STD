@@ -53,6 +53,7 @@ cout<<endl;
 //        }
 
 adrRelation r;
+
     add_penulis(L,p,Lb);
     add_books(Lb,z,L);
     hubungkan(L,Lb);
@@ -60,5 +61,8 @@ adrRelation r;
     show_penulis_with_books(L);
     deleteB(Lb,L,z,r);
     show_penulis_with_books(L);
+    show_books_with_penulis(Lb,L);
+    show_specific_penulis(L,Lb);
+    show_specific_book(Lb,L);
     return 0;
 }
