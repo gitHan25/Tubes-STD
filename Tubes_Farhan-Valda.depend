@@ -1,19 +1,19 @@
 # depslib dependency file v1.0
 140736469717418 <<<<<<< HEAD
 
-1704040111 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
+1704055272 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\main.cpp
 	"penulis.h"
 	"books.h"
 	"menu.h"
 
-1703763801 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
+1704056702 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.h
 	<iostream>
 	"books.h"
 
 1704033898 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\books.h
 	<iostream>
 
-1703763801 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
+1704056728 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\penulis.cpp
 	"penulis.h"
 	"books.h"
 
@@ -39,12 +39,12 @@
 	"penulis.h"
 	"books.h"
 
-1704041475 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\menu.cpp
+1704083485 source:d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\menu.cpp
 	"menu.h"
 	"penulis.h"
 	"books.h"
 
-1704040057 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\menu.h
+1704055249 d:\tel-u\smt 3\prak. struktur data\tp\tubes_farhan-valda\menu.h
 	"penulis.h"
 	"menu.h"
 

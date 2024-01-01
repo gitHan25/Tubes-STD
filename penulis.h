@@ -56,6 +56,7 @@ void delete_after_penulis(list_penulis &L,adrPenulis p);
 adrRelation create_elm_relation(adrBooks x);
 void addRelation(adrPenulis P, adrRelation R);
 void connect(adrPenulis p , adrRelation q);
+adrRelation findRelationInList(list_penulis L,string judul);
 adrRelation findRelation(adrPenulis p,string judul_buku);
 void showPenulis(list_penulis L);
 void deleteR(list_penulis &L,adrRelation R);
