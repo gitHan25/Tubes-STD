@@ -126,7 +126,7 @@ void hubungkan(list_penulis &LP,List_books LB){
 
 
 void deleteP(list_penulis &LP,List_books LB,adrPenulis P){
-     string nama;
+    string nama;
     cout<<"--------------------------------------"<<endl;
     cout<<"             Hapus penulis"<<endl;
     cout<<"--------------------------------------"<<endl;
@@ -149,8 +149,59 @@ void deleteP(list_penulis &LP,List_books LB,adrPenulis P){
         cout<<endl;
     }
 
+}
+void deleteB(List_books &LB,list_penulis &LP,adrBooks p,adrRelation r){
+
+    string judul;
+    cout<<"--------------------------------------"<<endl;
+    cout<<"             Hapus buku"<<endl;
+    cout<<"--------------------------------------"<<endl;
+    show_books(LB);
+
+    if(first_B(LB)!=NULL){
+        cout<<"Masukkan judul buku yang akan dihapus: ";
+        cin>>judul;
+
+            p = find_books(LB,judul);
+            if(p!=NULL){
+                    r = findRelationInList(LP,judul);
+                    deleteR(LP,r);
+                    delete_books(LB,p);
+                    cout<<"Buku "<<judul<<" telah dihapus"<<endl;
+                    show_books(LB);
+            }else{
+        cout<<"Buku tidak ditemukan, coba lagi!"<<endl;
+            }
+    }else{
+    cout<<"Data buku kosong!"<<endl;
+    }
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+}
 
 
 
+void show_penulis_with_books(list_penulis LP){
+
+    adrPenulis k = first_P(LP);
+
+    while (k != NULL) {
+        cout << "Penulis: " << info(k).name << endl;
+
+        adrRelation n = child(k);
+
+        if(n==NULL){
+            cout<<"Penulis belum menulis apapun!"<<endl;
+        }else{
+            while (n != NULL) {
+
+                cout << "Buku: " <<info(books(n)).judul_buku << endl;
+                n = nextRelation(n);
+            }
+        }
+
+        k = next(k);
+    }
 
 }
+

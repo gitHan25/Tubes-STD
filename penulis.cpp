@@ -190,6 +190,24 @@ void connect(adrPenulis p,adrRelation q){
         cout<<"Penulis belum terdaftar"<<endl;
     }
 }
+adrRelation findRelationInList(list_penulis L,string judul){
+ adrPenulis p = first_P(L);
+
+    while (p != NULL) {
+        adrRelation q = child(p);
+
+        while (q != NULL) {
+            if (info(books(q)).judul_buku == judul) {
+                return q;
+            }
+            q = nextRelation(q);
+        }
+
+        p = next(p);
+    }
+
+    return NULL;
+}
 
 adrRelation findRelation(adrPenulis p,string judul_buku){
 
