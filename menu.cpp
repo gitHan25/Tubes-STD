@@ -191,28 +191,33 @@ void deleteB(List_books &LB,list_penulis &LP,adrBooks p,adrRelation r){
 
 
 
-void show_penulis_with_books(list_penulis LP){
+void show_penulis_with_books(list_penulis LP,List_books LB){
 
-    adrPenulis k = first_P(LP);
+   adrPenulis p;
+   if(is_emptyP(LP)){
+    cout<<"List kosong"<<endl;
+   }else{
+        p =first_P(LP);
 
-    while (k != NULL) {
-        cout << "Penulis: " << info(k).name << endl;
-
-        adrRelation n = child(k);
-
-        if(n==NULL){
-            cout<<"Penulis belum menulis apapun!"<<endl;
-        }else{
-            while (n != NULL) {
-
-                cout << "Buku: " <<info(books(n)).judul_buku << endl;
-                n = nextRelation(n);
+            while(p!=NULL){
+                    cout<<"Nama penulis: "<<info(p).name<<endl;
+                    cout<<"Buku yang ditulis: "<<endl;
+                 adrRelation r = child(p);
+                    if(r!=NULL){
+                    while(r!=NULL){
+                        cout<<"-"<<info(books(r)).judul_buku<<endl;
+                        r=nextRelation(r);
+                    }
+                }else{
+                    cout<<"Belum ada buku yang terdaftar!"<<endl;
+                }
+                    p=next(p);
             }
-        }
+   }
 
-        k = next(k);
-    }
-
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+    menu(LP,LB);
 
 }
 
@@ -336,7 +341,7 @@ void show_most_active_penulis(list_penulis LP,List_books LB){
     cout<<"---------------------------------------"<<endl;
     cout<<" Penulis yang menulis buku paling banyak "<<endl;
     cout<<"---------------------------------------"<<endl;
-
+    int i;
     int maks = 0;
     adrPenulis temp= NULL;
 
@@ -346,7 +351,7 @@ void show_most_active_penulis(list_penulis LP,List_books LB){
         adrPenulis p = first_P(LP);
 
             while(p!=NULL){
-                int i = 0;
+                i = 0;
                 adrRelation r = child(p);
                     while(r!=NULL){
                         i++;
@@ -359,7 +364,11 @@ void show_most_active_penulis(list_penulis LP,List_books LB){
                     p=next(p);
             }
 
-            cout<<"Penulis yang menulis buku paling banyak adalah: "<<info(temp).name<<", menulis sebanyak "<<maks<<" buku"<<endl;
+            if (maks > 0 || maks == i) {
+            cout << "Penulis yang menulis buku paling banyak adalah: " << info(temp).name << ", menulis sebanyak " << maks << " buku" << endl;
+        } else {
+            cout << "Tidak ada buku yang ditulis oleh penulis" << endl;
+        }
 
     }
      cout<<endl;
@@ -368,41 +377,50 @@ void show_most_active_penulis(list_penulis LP,List_books LB){
 }
 
 
-void show_less_active_penulis(list_penulis LP,List_books LB){
+void show_less_active_penulis(list_penulis LP, List_books LB) {
+    cout << "---------------------------------------" << endl;
+    cout << " Penulis yang menulis buku paling sedikit " << endl;
+    cout << "---------------------------------------" << endl;
+    int i;
+    int mins = 0;
+    adrPenulis temp = NULL;
 
-    cout<<"---------------------------------------"<<endl;
-    cout<<" Penulis yang menulis buku paling sedikit "<<endl;
-    cout<<"---------------------------------------"<<endl;
-
-    int min = 0;
-    adrPenulis temp= NULL;
-
-    if(is_emptyB(LB) && is_emptyP(LP)){
-        cout<<"List kosong"<<endl;
-    }else{
+    if (is_emptyB(LB) && is_emptyP(LP)) {
+        cout << "List kosong" << endl;
+    } else {
         adrPenulis p = first_P(LP);
 
-            while(p!=NULL){
-                int i = 0;
-                adrRelation r = child(p);
-                    while(r!=NULL){
-                        i++;
-                        r=nextRelation(r);
-                    }
-                    if(min>i){
-                        temp = p;
-                        min =i;
-                    }
-                    p=next(p);
+        while (p != NULL) {
+             i = 0;
+            adrRelation r = child(p);
+
+            while (r != NULL) {
+                i++;
+                r = nextRelation(r);
             }
 
-            cout<<"Penulis yang menulis buku paling sedikit adalah: "<<info(temp).name<<", menulis sebanyak "<<min<<" buku"<<endl;
+            if (mins == 0 || mins > i) {
+                temp = p;
+                mins = i;
+            }
 
+            p = next(p);
+        }
+
+        if(mins == i || mins > 0){
+             cout << "Penulis yang menulis buku paling sedikit adalah: " << info(temp).name << ", menulis sebanyak " << mins << " buku" << endl;
+        }else{
+
+            cout << "Tidak ada buku yang ditulis oleh penulis" << endl;
+
+        }
     }
-    cout<<endl;
-    cout<<"______________________________________"<<endl;
-    menu(LP,LB);
+
+    cout << endl;
+    cout << "______________________________________" << endl;
+    menu(LP, LB);
 }
+
 
 
 void menu(list_penulis &LP,List_books &LB){
@@ -444,7 +462,7 @@ void menu(list_penulis &LP,List_books &LB){
         deleteB(LB,LP,q,r);
         break;
     case 6:
-        show_penulis_with_books(LP);
+        show_penulis_with_books(LP,LB);
         break;
     case 7:
         show_books_with_penulis(LB,LP);

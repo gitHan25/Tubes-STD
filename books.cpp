@@ -132,16 +132,12 @@ void delete_last_books(List_books &L,adrBooks p){
         }
 };
 void delete_after_books(List_books &L,adrBooks p){
-    adrBooks q =first_B(L);
+
     adrBooks prec;
-        while(q!=NULL){
-            if(info(q).judul_buku == info(p).judul_buku){
-                prec=next(q);
-                next(q)=next(prec);
-                next(prec)=NULL;
-            }
-            q=next(q);
-        }
+
+        prec=next(p);
+        next(p)=next(prec);
+        next(prec)=NULL;
 };
 
 void show_books(List_books L){
