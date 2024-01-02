@@ -237,6 +237,7 @@ void show_books_with_penulis(List_books LB,list_penulis LP){
                         cout<<"Buku "<<info(q).judul_buku<<" ditulis oleh: "<<endl;
 
                             adrPenulis p = first_P(LP);
+                            if(p!=NULL){
                                 while(p!=NULL){
                                     adrRelation r = child(p);
 
@@ -247,6 +248,9 @@ void show_books_with_penulis(List_books LB,list_penulis LP){
                                             r=nextRelation(r);
                                         }
                                         p=next(p);
+                                    }
+                                }else{
+                                    cout<<"Belum ada penulis yang terdaftar!"<<endl;
                                 }
                            q=next(q);
                 }
