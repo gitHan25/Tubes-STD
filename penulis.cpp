@@ -28,13 +28,14 @@ void insert_penulis(list_penulis &L,adrPenulis p){
     adrPenulis check =find_penulis(L,info(p).name);
 
         if (check !=NULL){
-            cout<<"Penulis sudah terdaftar!"<<endl;
+            cout<<"Penulis sudah pernah terdaftar!"<<endl;
         }else{
             if(first_P(L)==NULL){
                 insert_first_penulis(L,p);
             }else{
                 insert_last_penulis(L,p);
             }
+            cout<<"Penulis berhasil terdaftar!"<<endl;
         }
 }
 
@@ -70,7 +71,7 @@ void insert_first_penulis(list_penulis &L,adrPenulis p){
 
 }
 
-
+//cari penulis berdasarkan namanya
 adrPenulis find_penulis(list_penulis L,string name){
 
     adrPenulis q = first_P(L);
@@ -84,6 +85,7 @@ adrPenulis find_penulis(list_penulis L,string name){
         return NULL;
 }
 
+//Menghapus element pertama dari list penulis
 void delete_first_penulis(list_penulis &L,adrPenulis p){
     if(is_emptyP(L)){
         cout<<"List penulis kosong"<<endl;
@@ -100,6 +102,8 @@ void delete_first_penulis(list_penulis &L,adrPenulis p){
 
 
 }
+
+//Menghapus element terakhir dari list penulis
 void delete_last_penulis(list_penulis &L,adrPenulis p){
 
     if(is_emptyP(L)){
@@ -122,6 +126,7 @@ void delete_last_penulis(list_penulis &L,adrPenulis p){
         }
 }
 
+//Hapus next element pada dari parameter
 void delete_after_penulis(list_penulis &L,adrPenulis p){
 
     adrPenulis prec;
@@ -156,12 +161,14 @@ void delete_penulis(list_penulis &L,adrPenulis p){
 }
 
 
+//Membuat elm relasi dengan parameter x sebagai alamat buku
 adrRelation create_elm_relation(adrBooks x){
     adrRelation p = new elmRelation;
     books(p) = x;
     nextRelation(p)=NULL;
     return p;
 }
+
 
 
 
@@ -297,11 +304,11 @@ void deleteR(list_penulis &L, adrRelation R) {
 
         adrRelation q =child(P);
 
-                while(nextRelation(nextRelation(q))!=NULL){
-                q=nextRelation(q);
+            while(nextRelation(nextRelation(q))!=NULL){
+                    q=nextRelation(q);
                 }
                     R=nextRelation(q);
-                   nextRelation(R)=NULL;
+                    nextRelation(R)=NULL;
                     nextRelation(q)=NULL;
 
     }
@@ -316,6 +323,18 @@ void deleteR(list_penulis &L, adrRelation R) {
 
 
     }
+
+int count_books(adrPenulis p){
+    int i = 0;
+    adrRelation r = child(p);
+
+    while (r != NULL) {
+        i++;
+        r = nextRelation(r);
+    }
+
+    return i;
+}
 
 
 

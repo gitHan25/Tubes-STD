@@ -29,6 +29,7 @@ void add_penulis(list_penulis &LP,adrPenulis p,List_books LB){
         p = create_elm_penulis(x);
         insert_penulis(LP,p);
 
+
         }
 
 
@@ -123,6 +124,7 @@ void hubungkan(list_penulis &LP,List_books LB){
                 cout<<endl;
 
         }
+
     cout<<endl;
     cout<<"______________________________________"<<endl;
     menu(LP, LB);
@@ -340,53 +342,12 @@ void show_specific_book(List_books LB,list_penulis LP){
 
 
 
-void show_most_active_penulis(list_penulis LP,List_books LB){
-
-    cout<<"---------------------------------------"<<endl;
-    cout<<" Penulis yang menulis buku paling banyak "<<endl;
-    cout<<"---------------------------------------"<<endl;
-    int i;
-    int maks = 0;
-    adrPenulis temp= NULL;
-
-    if(is_emptyB(LB) && is_emptyP(LP)){
-        cout<<"List kosong"<<endl;
-    }else{
-        adrPenulis p = first_P(LP);
-
-            while(p!=NULL){
-                i = 0;
-                adrRelation r = child(p);
-                    while(r!=NULL){
-                        i++;
-                        r=nextRelation(r);
-                    }
-                    if(maks<i){
-                        temp = p;
-                        maks =i;
-                    }
-                    p=next(p);
-            }
-
-            if (maks > 0 || maks == i) {
-            cout << "Penulis yang menulis buku paling banyak adalah: " << info(temp).name << ", menulis sebanyak " << maks << " buku" << endl;
-        } else {
-            cout << "Tidak ada buku yang ditulis oleh penulis" << endl;
-        }
-
-    }
-     cout<<endl;
-    cout<<"______________________________________"<<endl;
-    menu(LP,LB);
-}
-
-
-void show_less_active_penulis(list_penulis LP, List_books LB) {
+void show_most_active_penulis(list_penulis LP, List_books LB) {
     cout << "---------------------------------------" << endl;
-    cout << " Penulis yang menulis buku paling sedikit " << endl;
+    cout << " Penulis yang menulis buku paling banyak " << endl;
     cout << "---------------------------------------" << endl;
-    int i;
-    int mins = 0;
+
+    int maks = -1;
     adrPenulis temp = NULL;
 
     if (is_emptyB(LB) && is_emptyP(LP)) {
@@ -395,15 +356,47 @@ void show_less_active_penulis(list_penulis LP, List_books LB) {
         adrPenulis p = first_P(LP);
 
         while (p != NULL) {
-             i = 0;
-            adrRelation r = child(p);
+            int i = count_books(p);
 
-            while (r != NULL) {
-                i++;
-                r = nextRelation(r);
+            if (maks == -1 || maks < i) {
+                temp = p;
+                maks = i;
             }
 
-            if (mins == 0 || mins > i) {
+            p = next(p);
+        }
+
+        if (maks > 0) {
+            cout << "Penulis yang menulis buku paling banyak adalah: " << info(temp).name << ", menulis sebanyak " << maks << " buku" << endl;
+        } else {
+            cout << "Tidak ada buku yang ditulis oleh penulis" << endl;
+        }
+    }
+
+    cout << endl;
+    cout << "______________________________________" << endl;
+    menu(LP, LB);
+
+}
+
+void show_less_active_penulis(list_penulis LP, List_books LB) {
+    cout << "---------------------------------------" << endl;
+    cout << " Penulis yang menulis buku paling sedikit " << endl;
+    cout << "---------------------------------------" << endl;
+
+    int mins = -1;
+    adrPenulis temp = NULL;
+
+    if (is_emptyB(LB) && is_emptyP(LP)) {
+        cout << "List kosong" << endl;
+    } else {
+        adrPenulis p = first_P(LP);
+
+        while (p != NULL) {
+
+              int i = count_books(p);
+
+            if (mins > i ||mins==-1 ) {
                 temp = p;
                 mins = i;
             }
@@ -411,12 +404,12 @@ void show_less_active_penulis(list_penulis LP, List_books LB) {
             p = next(p);
         }
 
-        if(mins == i || mins > 0){
-             cout << "Penulis yang menulis buku paling sedikit adalah: " << info(temp).name << ", menulis sebanyak " << mins << " buku" << endl;
-        }else{
-
-            cout << "Tidak ada buku yang ditulis oleh penulis" << endl;
-
+        if (mins == 0) {
+            cout << "Penulis yang belum pernah menulis buku adalah: " << info(temp).name << endl;
+        } else if (mins !=-1 ) {
+            cout << "Penulis yang menulis buku paling sedikit adalah: " << info(temp).name << ", menulis sebanyak " << mins << " buku" << endl;
+        } else {
+            cout << "Tidak ada penulis yang paling sedikit menulis buku" << endl;
         }
     }
 
@@ -442,7 +435,8 @@ void menu(list_penulis &LP,List_books &LB){
 	cout<<"3. Hubungkan"<<"                                      "<<"9.  Cari buku"<<endl;
 	cout<<"4. Hapus penulis"<<"                                  "<<"10. Tampilkan penulis yang paling banyak menulis "<<endl;
 	cout<<"5. Hapus buku"<<"                                     "<<"11. Tampilan penulis yang paling sedikit menulis "<<endl;
-	cout<<"6. Tampilkan penulis dan buku yang ditulis"<<"        "<<"12. Exit"<<endl;
+	cout<<"6. Tampilkan penulis dan buku yang ditulis"<<"        "<<"12. Tampilkan seluruh info buku"<<endl;
+	cout<<"13. Tampilkan seluruh info penulis        "<<"        "<<"14. Exit"<<endl;
 
 	cout<<endl;
 	cout<<"Pilih fitur: ";
@@ -483,8 +477,16 @@ void menu(list_penulis &LP,List_books &LB){
     case 11:
         show_less_active_penulis(LP,LB);
         break;
+    case 12:
+       show_books(LB);
+       menu(LP,LB);
+       break;
+    case 13:
+        showPenulis(LP);
+        menu(LP,LB);
+        break;
     default:
-        cout<<"Close Program"<<endl;
+        cout<<"Close program"<<endl;
 	}
 
 }
